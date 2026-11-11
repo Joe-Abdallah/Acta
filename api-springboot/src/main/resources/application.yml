@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-postgres-crud
+  datasource:
+    url: jdbc:postgresql://localhost:5432/acta
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+app:
+  security:
+    jwt:
+      # Generate one (example):
+      #   openssl rand -base64 32
+      # Note: default is intentionally long enough for HS256 in tests/dev.
+      secret: ${JWT_SECRET:change-me-change-me-change-me-change-me}
+      expiration-seconds: ${JWT_EXPIRATION_SECONDS:3600}

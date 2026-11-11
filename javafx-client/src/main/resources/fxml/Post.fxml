@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.csis231.javafxclient.controller.PostController"
+      spacing="15" style="-fx-padding: 15;">
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Select Community:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="communityCombo" promptText="Choose a community" prefWidth="250"
+                  onAction="#handleCommunitySelected"/>
+        <Button text="Refresh" onAction="#handleRefreshPosts"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Posts" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <!-- Main content area: post list on the left, post detail on the right -->
+    <HBox spacing="15" VBox.vgrow="ALWAYS">
+        <ListView fx:id="postsList" prefHeight="350" HBox.hgrow="ALWAYS" minWidth="0"/>
+
+        <!-- Post detail pane — hidden until a post is selected; managed=false means it takes no space while hidden -->
+        <VBox fx:id="postDetailPane" spacing="8"
+              style="-fx-padding: 12; -fx-border-color: #cccccc; -fx-border-width: 0 0 0 1;"
+              minWidth="260" maxWidth="320" visible="false" managed="false">
+            <Label text="Post Detail" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+            <Separator/>
+            <Label fx:id="postDetailTitle"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                   wrapText="true"/>
+            <Label fx:id="postDetailMeta"
+                   style="-fx-text-fill: #777777; -fx-font-size: 12px;"
+                   wrapText="true"/>
+            <Separator/>
+            <TextArea fx:id="postDetailContent"
+                      editable="false"
+                      wrapText="true"
+                      VBox.vgrow="ALWAYS"
+                      prefHeight="240"
+                      style="-fx-background-color: transparent; -fx-border-color: transparent;"/>
+        </VBox>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Create a New Post" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Title:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="400"/>
+        <Label text="Content:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextArea fx:id="contentField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefHeight="100"/>
+    </GridPane>
+    <Button fx:id="createPostBtn" text="Create Post" onAction="#handleCreatePost"/>
+    <Button text="Summarize with AI" onAction="#handleSummarize" />
+
+    <Label fx:id="statusLabel"/>
+</VBox>

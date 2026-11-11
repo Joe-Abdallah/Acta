@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.csis231.javafxclient.controller.CommentController"
+      spacing="15" style="-fx-padding: 15;">
+
+    <!-- Post selector -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Select Post:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="postCombo" promptText="Choose a post" prefWidth="350"
+                  onAction="#handlePostSelected"/>
+        <Button text="Refresh" onAction="#handleRefreshComments"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Comments" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <!-- Comment list — cells are built entirely in the controller (graphic mode) -->
+    <ListView fx:id="commentsList" VBox.vgrow="ALWAYS" prefHeight="350"/>
+
+    <Separator/>
+
+    <!-- Reply context banner — hidden until user clicks a Reply button -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="replyingToLabel" style="-fx-text-fill: #1a73e8; -fx-font-style: italic;"/>
+        <Button fx:id="cancelReplyBtn" text="✕ Cancel reply"
+                onAction="#handleCancelReply"
+                visible="false" managed="false"
+                style="-fx-font-size: 11px;"/>
+    </HBox>
+
+    <!-- New comment / reply form -->
+    <Label text="Write a Comment" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <TextArea fx:id="commentContentField"
+              promptText="What are your thoughts?"
+              prefHeight="90"
+              wrapText="true"/>
+    <Button text="Post Comment" onAction="#handleCreateComment"/>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: #555555;"/>
+
+</VBox>

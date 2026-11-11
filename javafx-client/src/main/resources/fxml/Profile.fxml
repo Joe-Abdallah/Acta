@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.csis231.javafxclient.controller.ProfileController"
+      spacing="15" style="-fx-padding: 20;" alignment="TOP_CENTER">
+
+    <Label text="My Profile" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Username:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="usernameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Member Since:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="createdAtField" editable="false" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="New Password:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="newPasswordField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Confirm Password:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button fx:id="updateButton" text="Update Profile" onAction="#handleUpdate"/>
+        <Button fx:id="clearButton" text="Clear" onAction="#handleClear"/>
+    </HBox>
+
+    <Label fx:id="statusLabel"/>
+</VBox>
